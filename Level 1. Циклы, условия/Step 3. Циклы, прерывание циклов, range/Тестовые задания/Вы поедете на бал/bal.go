@@ -5,16 +5,6 @@ import "fmt"
 func main() {
 	var n string
 
-	/*for i := 0; i < len(n); i++{
-		fmt.Scan(&n)
-		if n == "да" || n == "нет" || n == "черный" || n == "белый"{
-			fmt.Println("Поражение")
-			break
-		}else{
-			fmt.Println("Игра продолжается")
-		}
-	}*/
-
 	for {
 		_, err := fmt.Scan(&n)
 		if err != nil {
