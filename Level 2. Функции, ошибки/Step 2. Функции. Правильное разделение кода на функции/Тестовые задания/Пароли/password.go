@@ -1,22 +1,19 @@
 package main
 
-import "unicode"
+import (
+	"fmt"
+	"unicode"
+)
 
 func checkPassword(password string) bool {
-	if  hasMinimumLength(password) && hasUpper(password){
+	if hasMinimumLength(password, 8) && hasUpper(password) {
 		return true
 	}
 	return false
 }
 
-func hasMinimumLength(password string) bool {
-	pass := len(password)
-	if pass >= 8 {
-
-		return true
-	}
-	return false
-
+func hasMinimumLength(password string, minLength int) bool {
+	return len(password) >= minLength
 }
 
 func hasUpper(password string) bool {
@@ -27,6 +24,23 @@ func hasUpper(password string) bool {
 		}
 	}
 	return false
+}
+
+func main() {
+	fmt.Println(hasMinimumLength("a", 10))
+	fmt.Println(hasMinimumLength("", 0))
+	fmt.Println(hasMinimumLength("aaa", 3))
+	fmt.Println(hasMinimumLength("a", 1))
+	fmt.Println(hasMinimumLength("afaghlonfwdfbomwdfbj", 10))
+
+	fmt.Println(hasUpper("A"))
+	fmt.Println(hasUpper(""))
+	fmt.Println(hasUpper("f"))
+	fmt.Println(hasUpper("wjefbhqjvoqnihbejbhefhqwlbhdw"))
+	fmt.Println(hasUpper("AAAAAAAAAAAAAA"))
+	fmt.Println(hasUpper("Aerfbjebrfh"))
+	fmt.Println(hasUpper("gerfbjebrfhF"))
+	fmt.Println(hasUpper("gerfbJebrfhl"))
 }
 
 /*
