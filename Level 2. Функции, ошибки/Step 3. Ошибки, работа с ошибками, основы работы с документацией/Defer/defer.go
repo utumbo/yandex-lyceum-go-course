@@ -1,8 +1,18 @@
 package main
 
-import "fmt"
+import "os"
 
-func main() {
-    defer fmt.Println("World") // Отложенный вызов функции вывода в консоль
-    fmt.Println("Hello")
+func createFile(filename string, data []byte) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close() // Отложенный вызов функции закрытия файла
+
+	_, err = f.Write(data)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
